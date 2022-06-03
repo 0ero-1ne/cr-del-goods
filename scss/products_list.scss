@@ -1,0 +1,50 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: "Montserrat", "Verdana", sans-serif;
+}
+
+body {
+	width: 100%;
+	padding: 0 100px;
+	@media screen and (max-width: 749px) {padding: 0 20px};
+
+	.main {
+		border-bottom: 1px solid black;
+		margin-bottom: 20px;
+		padding: 10px 0 30px;
+
+		.products_list {
+			display: grid;
+			grid-template-columns: repeat(4, 200px);
+			justify-content: center;
+			gap: 50px;
+
+			.product {
+				padding: 20px;
+				border: 1px solid black;
+				font-size: 14px;
+				position: relative;
+
+				span {display: block; text-align: center;}
+
+				.delete-checkbox {
+					position: absolute;
+					top: 10px;
+					left: 10px;
+				}
+			}
+
+			@media screen and (min-width: 900px) and (max-width: 1200px) {
+				grid-template-columns: repeat(3, 200px);
+			}
+
+			@media screen and (min-width: 490px) and (max-width: 899px) {
+				grid-template-columns: repeat(2, 200px);
+			}
+		}
+	}
+
+	.footer {text-align: center;}
+}

@@ -1,0 +1,34 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid black;
+	padding: 5px 0;
+	margin: 10px 0 20px;
+
+	.button {
+		padding: 5px 15px;
+		background: none;
+		border: 1px solid black;
+		cursor: pointer;
+		margin: 0 10px;
+		box-shadow: 2px 2px 0 0 black;
+		transition: ease-out 0.1s;
+
+		a {
+			text-decoration: none;
+			color: black;
+		}
+
+		&:hover {
+			box-shadow: 2px 2px 0 0 #45DB23FF;
+			border-color: #45DB23FF;
+		}
+	}
+
+	#delete-product-btn:hover,
+	#cancel-adding-btn:hover {
+		box-shadow: 2px 2px 0 0 #F10D45FF;
+		border-color: #F10D45FF;
+	}
+}
