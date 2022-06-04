@@ -19,21 +19,26 @@
 		}
 
 		public function save() {
+			//getting row with sended sku
+			$query = "SELECT * FROM $this->table_name WHERE sku = '$this->sku'";
+			$check = $this->db->prepare($query);
+			$check->execute();
 
-			$query = "INSERT INTO {$this->table_name} SET sku=:sku, name=:name, price=:price, product_type=:productType, description=:description";
+			//checking existing of row with sended sku
+			if ($check->fetch(PDO::FETCH_ASSOC) === false) {
+				$query = "INSERT INTO {$this->table_name} SET sku=:sku, name=:name, price=:price, product_type=:productType, description=:description";
+				$sth = $this->db->prepare($query);
 
-			$sth = $this->db->prepare($query);
-
-			$sth->bindParam(":sku", $this->sku);
-			$sth->bindParam(":name", $this->name);
-			$sth->bindParam(":price", $this->price);
-			$sth->bindParam(":productType", $this->productType);
-			$sth->bindParam(":description", $this->description);
-
-			if ($sth->execute()) {
+				$sth->bindParam(":sku", $this->sku);
+				$sth->bindParam(":name", $this->name);
+				$sth->bindParam(":price", $this->price);
+				$sth->bindParam(":productType", $this->productType);
+				$sth->bindParam(":description", $this->description);
+				
+				$sth->execute();
 				return true;
 			} else {
-				return $sth->errorInfo();
+				return "<div class='message error'>SKU $this->sku is already exists</div>";
 			}
 		}
 

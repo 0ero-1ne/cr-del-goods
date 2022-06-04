@@ -6,19 +6,23 @@
   padding: 5px 0;
   margin: 10px 0 20px; }
   .header .button {
-    padding: 5px 15px;
+    display: inline-block;
     background: none;
     border: 1px solid black;
     cursor: pointer;
-    margin: 0 10px;
+    margin-left: 10px;
     box-shadow: 2px 2px 0 0 black;
     transition: ease-out 0.1s; }
     .header .button a {
+      display: block;
+      padding: 5px 15px;
       text-decoration: none;
       color: black; }
     .header .button:hover {
       box-shadow: 2px 2px 0 0 #45DB23FF;
       border-color: #45DB23FF; }
+  .header input[type="submit"] {
+    padding: 5px 15px; }
   .header #delete-product-btn:hover,
   .header #cancel-adding-btn:hover {
     box-shadow: 2px 2px 0 0 #F10D45FF;

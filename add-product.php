@@ -34,12 +34,10 @@
 				$product->description = $product->getDescription($_POST);
 				$result = $product->save();
 
-				if ($result === true) {
-					echo '<div class="message success">Product was added</div>';
-				} else {
-					echo $result[1] === 1062 ? "<div class='message error'>SKU {$product->sku} is already exists</div>" : 
-											   "<div class='message error'>$result[2]</div>";
-				}
+				if ($result !== true)
+					echo $result;
+				else
+					header('Location: /index.php');
 			}
 		?>
 		<form action="<?= $_SERVER['PHP_SELF']; ?>" id="product_form" method="POST">

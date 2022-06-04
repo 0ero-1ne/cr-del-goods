@@ -1,3 +1,14 @@
+<?php
+	include_once 'config/db.php';
+	$db = new Database();
+	$connection = $db->setConnection();
+	$products = $db->getProducts("products");
+
+	if ($_POST) {
+		$db->deleteProducts($_POST);
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,12 +25,15 @@
 		<h1>Products</h1>
 		<div class="header__actions">
 			<button class="button"><a href="add-product.php">ADD</a></button>
-			<button id="delete-product-btn" class="button">MASS DELETE</button>
+			<input type="submit" form="delete-form" id="delete-product-btn" class="button" value="MASS DELETE">
 		</div>
 	</header>
 	<main class="main">
+		<form action="<?= $_SERVER['PHP_SELF']?>" id="delete-form" method="POST"></form>
 		<div class="products_list">
-			
+			<?php
+				$db->printProducts($products);
+			?>
 		</div>
 	</main>
 	<footer class="footer">
