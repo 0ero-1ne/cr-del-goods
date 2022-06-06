@@ -24,7 +24,7 @@
 	<header class="header">
 		<h1>Products</h1>
 		<div class="header__actions">
-			<button class="button"><a href="add-product.php">ADD</a></button>
+			<button class="button"><a href="add-product">ADD</a></button>
 			<input type="submit" form="delete-form" id="delete-product-btn" class="button" value="MASS DELETE">
 		</div>
 	</header>

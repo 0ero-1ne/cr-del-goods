@@ -13,7 +13,7 @@
 		public function __construct($data, $db) {
 			$this->sku = htmlspecialchars($data['sku']);
 			$this->name = htmlspecialchars($data['name']);
-			$this->price = (float) htmlspecialchars($data['price']);
+			$this->price = (float) $data['price'];
 			$this->productType = strtolower(htmlspecialchars($data['productType']));
 			$this->db = $db;
 		}

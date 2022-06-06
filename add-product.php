@@ -6,8 +6,6 @@
 	$connection = $db->setConnection();
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,10 +35,10 @@
 				if ($result !== true)
 					echo $result;
 				else
-					header('Location: /index.php');
+					header('Location: /');
 			}
 		?>
-		<form action="<?= $_SERVER['PHP_SELF']; ?>" id="product_form" method="POST">
+		<form action="add-product" id="product_form" method="POST">
 			<div class="form_group">
 				<label for="sku">SKU</label>
 				<input type="text" id="sku" name="sku" placeholder="SKU..." required />
@@ -51,7 +49,7 @@
 			</div>
 			<div class="form_group">
 				<label for="price">Price ($)</label>
-				<input type="text" id="price" name="price" placeholder="Price..." required />
+				<input type="number" step="0.01" id="price" name="price" placeholder="Price..." required />
 			</div>
 			<div class="form_group">
 				<label for="productType">Product Type</label>
@@ -66,29 +64,29 @@
 				<p>Please, provide size</p>
 				<div class="form_group">
 					<label for="size">Size (MB)</label>
-					<input type="text" id="size" name="dvd_size" placeholder="Size..." required />
+					<input type="number" id="size" name="dvd_size" placeholder="Size..." required />
 				</div>
 			</div>
 			<div class="book_input dynamic_block" style="display: none;">
 				<p>Please, provide weight</p>
 				<div class="form_group">
 					<label for="weight">Weight (KG)</label>
-					<input type="text" id="weight" name="book_weight" placeholder="Weight..." required />
+					<input type="number" id="weight" name="book_weight" placeholder="Weight..." required />
 				</div>
 			</div>
 			<div class="furniture_input dynamic_block" style="display: none;">
 				<p>Please, provide dimensions</p>
 				<div class="form_group">
 					<label for="height">Height (CM)</label>
-					<input type="text" id="height" name="furniture_height" placeholder="Height..." required />
+					<input type="number" id="height" name="furniture_height" placeholder="Height..." required />
 				</div>
 				<div class="form_group">
 					<label for="width">Width (CM)</label>
-					<input type="text" id="width" name="furniture_width" placeholder="Width..." required />
+					<input type="number" id="width" name="furniture_width" placeholder="Width..." required />
 				</div>
 				<div class="form_group">
 					<label for="length">Length (CM)</label>
-					<input type="text" id="length" name="furniture_length" placeholder="Length..." required />
+					<input type="number" id="length" name="furniture_length" placeholder="Length..." required />
 				</div>
 			</div>
 		</form>

@@ -48,7 +48,7 @@
 			$query = "DELETE FROM `products` WHERE `id` IN ($products_ids)";
 			$sth = $this->connection->prepare($query);
 			$sth->execute();
-			header("Location: /index.php");
+			header("Location: /");
 		}	
 	}
 
