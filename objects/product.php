@@ -1,7 +1,7 @@
 <?php
 
 	class Product {
-		private $table_name = "products";
+		private $tableName = "products";
 		private $db;
 
 		public $sku;
@@ -20,13 +20,13 @@
 
 		public function save() {
 			//getting row with sended sku
-			$query = "SELECT * FROM $this->table_name WHERE sku = '$this->sku'";
+			$query = "SELECT * FROM $this->tableName WHERE sku = '$this->sku'";
 			$check = $this->db->prepare($query);
 			$check->execute();
 
 			//checking existing of row with sended sku
 			if ($check->fetch(PDO::FETCH_ASSOC) === false) {
-				$query = "INSERT INTO {$this->table_name} SET sku=:sku, name=:name, price=:price, product_type=:productType, description=:description";
+				$query = "INSERT INTO {$this->tableName} SET sku=:sku, name=:name, price=:price, product_type=:productType, description=:description";
 				$sth = $this->db->prepare($query);
 
 				$sth->bindParam(":sku", $this->sku);

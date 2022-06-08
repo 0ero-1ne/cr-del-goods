@@ -2,7 +2,7 @@
 
 	class Database {
 		private $host = "localhost";
-		private $db_name = "juniortest";
+		private $databaseName = "juniortest";
 		private $username = "root";
 		private $password = "";
 		public $connection = null;
@@ -10,7 +10,7 @@
 		public function setConnection() {
 			
 			try {
-				$this->connection = new PDO("mysql:host=".$this->host.";dbname=".$this->db_name."", $this->username, $this->password);
+				$this->connection = new PDO("mysql:host=".$this->host.";dbname=".$this->databaseName."", $this->username, $this->password);
 			}
 			catch (PDOException $exc)
 			{
@@ -20,8 +20,8 @@
 			return $this->connection;
 		}
 
-		public function getProducts($table_name) {
-			$query = "SELECT * FROM ".$table_name;
+		public function getProducts($tableName) {
+			$query = "SELECT * FROM ".$tableName;
 			$sth = $this->connection->prepare($query);
 			$sth->execute();
 			return $sth;
@@ -44,8 +44,8 @@
 		}
 
 		public function deleteProducts($data) {
-			$products_ids = implode(", ", $data['delete-id']);
-			$query = "DELETE FROM `products` WHERE `id` IN ($products_ids)";
+			$productsIds = implode(", ", $data['delete-id']);
+			$query = "DELETE FROM `products` WHERE `id` IN ($productsIds)";
 			$sth = $this->connection->prepare($query);
 			$sth->execute();
 			header("Location: /");
