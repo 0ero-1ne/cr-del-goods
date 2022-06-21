@@ -1,11 +1,14 @@
 <?php
 	include_once 'config/db.php';
+	include_once 'objects/product.php';
+
 	$db = new Database();
 	$connection = $db->setConnection();
-	$products = $db->getProducts("products");
+	$product = new Product([], $connection);
+	$products = $product->getProducts("products");
 
 	if ($_POST) {
-		$db->deleteProducts($_POST);
+		$product->deleteProducts($_POST);
 	}
 ?>
 
@@ -32,7 +35,7 @@
 		<form action="<?= $_SERVER['PHP_SELF']?>" id="delete-form" method="POST"></form>
 		<div class="products_list">
 			<?php
-				$db->printProducts($products);
+				$product->printProducts($products);
 			?>
 		</div>
 	</main>

@@ -41,52 +41,52 @@
 		<form action="add-product" id="product_form" method="POST">
 			<div class="form_group">
 				<label for="sku">SKU</label>
-				<input type="text" id="sku" name="sku" placeholder="SKU..." required />
+				<input type="text" id="sku" name="sku" placeholder="SKU..." value="<?= $_POST['sku']?>" required />
 			</div>
 			<div class="form_group">
 				<label for="name">Name</label>
-				<input type="text" id="name" name="name" placeholder="Name..." required />
+				<input type="text" id="name" name="name" placeholder="Name..." value="<?= $_POST['name']?>" required />
 			</div>
 			<div class="form_group">
 				<label for="price">Price ($)</label>
-				<input type="number" step="0.01" id="price" name="price" placeholder="Price..." required />
+				<input type="number" step="0.01" id="price" name="price" placeholder="Price..." value="<?= $_POST['price']?>" required />
 			</div>
 			<div class="form_group">
 				<label for="productType">Product Type</label>
 				<select name="productType" id="productType" required>
 					<option value=""></option>
-					<option value="DVD">DVD</option>
-					<option value="Book">Book</option>
-					<option value="Furniture">Furniture</option>
+					<option value="DVD" <?php if ($_POST['productType'] === "DVD") echo "selected" ?>>DVD</option>
+					<option value="Book" <?php if ($_POST['productType'] === "Book") echo "selected" ?>>Book</option>
+					<option value="Furniture" <?php if ($_POST['productType'] === "Furniture") echo "selected" ?>>Furniture</option>
 				</select>
 			</div>
 			<div class="dvd_input dynamic_block" style="display: none;">
 				<p>Please, provide size</p>
 				<div class="form_group">
 					<label for="size">Size (MB)</label>
-					<input type="number" id="size" name="dvd_size" placeholder="Size..." required />
+					<input type="number" id="size" name="dvd_size" placeholder="Size..." value="<?= $_POST['dvd_size']?>" required />
 				</div>
 			</div>
 			<div class="book_input dynamic_block" style="display: none;">
 				<p>Please, provide weight</p>
 				<div class="form_group">
 					<label for="weight">Weight (KG)</label>
-					<input type="number" id="weight" name="book_weight" placeholder="Weight..." required />
+					<input type="number" id="weight" name="book_weight" placeholder="Weight..." value="<?= $_POST['weight']?>" required />
 				</div>
 			</div>
 			<div class="furniture_input dynamic_block" style="display: none;">
 				<p>Please, provide dimensions</p>
 				<div class="form_group">
 					<label for="height">Height (CM)</label>
-					<input type="number" id="height" name="furniture_height" placeholder="Height..." required />
+					<input type="number" id="height" name="furniture_height" placeholder="Height..." value="<?= $_POST['height']?>" required />
 				</div>
 				<div class="form_group">
 					<label for="width">Width (CM)</label>
-					<input type="number" id="width" name="furniture_width" placeholder="Width..." required />
+					<input type="number" id="width" name="furniture_width" placeholder="Width..." value="<?= $_POST['width']?>" required />
 				</div>
 				<div class="form_group">
 					<label for="length">Length (CM)</label>
-					<input type="number" id="length" name="furniture_length" placeholder="Length..." required />
+					<input type="number" id="length" name="furniture_length" placeholder="Length..." value="<?= $_POST['length']?>" required />
 				</div>
 			</div>
 		</form>

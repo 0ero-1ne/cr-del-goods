@@ -3,7 +3,7 @@
 	class Product {
 		private $tableName = "products";
 		private $db;
-
+		
 		public $sku;
 		public $name;
 		public $price;
@@ -40,6 +40,39 @@
 			} else {
 				return "<div class='message error'>SKU $this->sku is already exists</div>";
 			}
+		}
+
+		public function printProducts($products) {
+			if (!empty($products)) {
+				while ($row = $products->fetch(PDO::FETCH_ASSOC)) {
+					echo "<div class='product'>";
+						echo "<span>{$row['sku']}</span>";
+						echo "<span>{$row['name']}</span>";
+						echo "<span>".sprintf("%01.2f", $row['price'])." $</span>";
+						echo "<span>{$row['description']}</span>";
+						echo "<input type='checkbox' name='delete-id[]' form='delete-form' class='delete-checkbox' value='{$row['id']}' />";
+					echo "</div>";
+				}
+			}
+			else
+				return "<div class='no-products'>No products...	</div>";
+		}
+
+		private function deleteProducts($data) {
+			$productsIds = implode(", ", $data['delete-id']);
+			$query = "DELETE FROM `products` WHERE `id` IN ($productsIds)";
+			$sth = $this->db->prepare($query);
+			$sth->execute();
+
+			header("Location: /");
+		}
+
+		public function getProducts($tableName) {
+			$query = "SELECT * FROM ".$tableName;
+			$sth = $this->db->prepare($query);
+			$sth->execute();
+			
+			return $sth;
 		}
 
 		public function getDescription($data) {

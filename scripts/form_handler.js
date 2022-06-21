@@ -1,5 +1,5 @@
 function showInputs() {
-	const productType = this.value.toLowerCase() + '_input';
+	const productType = document.getElementById('productType').value.toLowerCase() + '_input';
 	const dynamicBlocks = document.querySelectorAll('.dynamic_block');
 
 	dynamicBlocks.forEach(elem => {
@@ -13,4 +13,7 @@ function showInputs() {
 	});
 }
 
-document.getElementById('productType').addEventListener('change', showInputs);
+document.addEventListener('DOMContentLoaded', () => {
+	showInputs();
+	document.getElementById('productType').addEventListener('change', showInputs);
+});
