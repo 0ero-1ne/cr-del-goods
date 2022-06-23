@@ -2,6 +2,7 @@
 	include_once 'config/db.php';
 	include_once 'objects/product.php';
 
+	//setting connection with database
 	$db = new Database();
 	$connection = $db->setConnection();
 ?>
@@ -27,6 +28,7 @@
 	</header>
 	<main class="main">
 		<?php
+			//if form submited
 			if ($_POST) {
 				$product = new Product($_POST, $connection);
 				$product->description = $product->getDescription($_POST);

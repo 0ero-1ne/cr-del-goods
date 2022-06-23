@@ -2,11 +2,15 @@
 	include_once 'config/db.php';
 	include_once 'objects/product.php';
 
+	//setting connection with database
 	$db = new Database();
 	$connection = $db->setConnection();
+
+	//getting list of products
 	$product = new Product([], $connection);
 	$products = $product->getProducts("products");
 
+	//if products selected and MASS DELETE button clicked
 	if ($_POST) {
 		$product->deleteProducts($_POST);
 	}
@@ -35,6 +39,7 @@
 		<form action="<?= $_SERVER['PHP_SELF']?>" id="delete-form" method="POST"></form>
 		<div class="products_list">
 			<?php
+				//printing list of products
 				$product->printProducts($products);
 			?>
 		</div>
