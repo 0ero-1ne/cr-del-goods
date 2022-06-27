@@ -1,5 +1,6 @@
 <?php
 
+	//common product class
 	class Product {
 		public $db;
 		public $tableName = "products";
@@ -41,6 +42,25 @@
 			}
 		}
 
+		public function printProducts($products) {
+			$rows = 0;
+			while ($row = $products->fetch(PDO::FETCH_ASSOC)) {
+				echo "<div class='product'>";
+					echo "<span>{$row['sku']}</span>";
+					echo "<span>{$row['name']}</span>";
+					echo "<span>".sprintf("%01.2f", $row['price'])." $</span>";
+					echo "<span>{$row['description']}</span>";
+					echo "<input type='checkbox' name='delete-id[]' form='delete-form' class='delete-checkbox' value='{$row['id']}' />";
+				echo "</div>";
+				$rows++;
+			}
+			
+			if ($rows === 0)
+				echo "<div class='no-products'>No products...	</div>";
+
+			return;
+		}
+
 		public function getProducts($tableName) {
 			$query = "SELECT * FROM ".$tableName;
 			$sth = $this->db->prepare($query);	
@@ -49,7 +69,7 @@
 			return $sth;
 		}
 
-		private function deleteProducts($data) {
+		public function deleteProducts($data) {
 			$productsIds = implode(", ", $data['delete-id']);
 			$query = "DELETE FROM `products` WHERE `id` IN ($productsIds)";
 			$sth = $this->db->prepare($query);		
