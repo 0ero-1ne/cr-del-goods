@@ -39,8 +39,19 @@
 		<form action="<?= $_SERVER['PHP_SELF']?>" id="delete-form" method="POST"></form>
 		<div class="products_list">
 			<?php
-				//printing list of products
-				$product->printProducts($products);
+				if (!empty($products)) {
+					while ($row = $products->fetch(PDO::FETCH_ASSOC)) {
+						echo "<div class='product'>";
+							echo "<span>{$row['sku']}</span>";
+							echo "<span>{$row['name']}</span>";
+							echo "<span>".sprintf("%01.2f", $row['price'])." $</span>";
+							echo "<span>{$row['description']}</span>";
+							echo "<input type='checkbox' name='delete-id[]' form='delete-form' class='delete-checkbox' value='{$row['id']}' />";
+						echo "</div>";
+					}
+				}
+				else
+					return "<div class='no-products'>No products...	</div>";
 			?>
 		</div>
 	</main>

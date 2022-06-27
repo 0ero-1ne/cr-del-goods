@@ -30,14 +30,15 @@
 		<?php
 			//if form submited
 			if ($_POST) {
-				$product = new Product($_POST, $connection);
-				$product->description = $product->getDescription($_POST);
+				$product = new Furniture($_POST, $connection);
+				var_dump($product);
+				/*$product->description = $product->getDescription($_POST);
 				$result = $product->save();
 
 				if ($result !== true)
 					echo $result;
 				else
-					header('Location: /');
+					header('Location: /');*/
 			}
 		?>
 		<form action="add-product" id="product_form" method="POST">
